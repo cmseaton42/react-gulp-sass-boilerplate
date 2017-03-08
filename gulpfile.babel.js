@@ -14,18 +14,15 @@ import minify from 'gulp-minify-css';
 import concat from 'gulp-concat';
 import rename from 'gulp-rename';
 
-
-// configuration files
+// configuration object
 let config = {
-    assetsDir: 'app/Resources/assets',
-    sassPattern: 'sass/**/*.scss',
+    sassPattern: 'src/sass/**/*.sass',
     production: !!util.env.production
 };
 
-
 // gulp.task('task-name', callback)
 gulp.task('sass', () => {
-    return gulp.src('src/sass/**/*.sass')
+    return gulp.src(config.sassPattern)
         .pipe(sass())
         .pipe(config.production ? minifyCSS() : util.noop())
         .pipe(prefix('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
@@ -35,7 +32,6 @@ gulp.task('sass', () => {
             stream: true
         }))
 });
-
 
 // Prepare ES6/JSX files for browser
 gulp.task('transpile', () => {
@@ -54,7 +50,6 @@ gulp.task('transpile', () => {
         }))
 });
 
-
 // Configure Auto Reload of Browser
 gulp.task('sync', () => {
     sync.init({
@@ -64,12 +59,10 @@ gulp.task('sync', () => {
     });
 });
 
-
-
 // watching multiple files with a task 'watch'
 gulp.task('default', ['sync', 'sass', 'transpile'], () => {
     // gulp.watch('filepath/pattern', ['all', 'tasknames', 'here'])
-    gulp.watch('src/sass/**/*.sass', ['sass']);
+    gulp.watch(config.sassPattern, ['sass']);
     gulp.watch('src/js/**/app.js', ['transpile']);
     gulp.watch('dist/html/**/*.html', sync.reload);
     gulp.watch('dist/index.html', sync.reload);
