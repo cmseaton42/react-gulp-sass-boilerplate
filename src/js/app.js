@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
 
 class Main extends React.Component {
     constructor(){
@@ -13,11 +12,11 @@ class Main extends React.Component {
     render(){
         return (
             <div className="container">
-                <h1>Hello World</h1>
+                <h1>Hello!!</h1>
             </div>
         );
     }
 }
 
 
-ReactDOM.render(<Main />, $('#root').get(0));
+ReactDOM.render(<Main />, document.getElementById('root'));
