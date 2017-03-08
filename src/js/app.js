@@ -12,11 +12,13 @@ class Main extends React.Component {
     render(){
         return (
             <div className="container">
-                <h1>Hello!!</h1>
+                <h1>Hello World!</h1>
             </div>
         );
     }
 }
+
+
 
 
 ReactDOM.render(<Main />, document.getElementById('root'));

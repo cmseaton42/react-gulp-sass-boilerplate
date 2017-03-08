@@ -1,7 +1,6 @@
 import gulp from 'gulp';
 import sass from 'gulp-sass';
 import sync from 'browser-sync';
-import babel from 'gulp-babel';
 import babelify from 'babelify';
 import browserify from 'browserify';
 import watchify from 'watchify';
